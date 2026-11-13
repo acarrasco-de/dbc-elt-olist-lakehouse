@@ -1,0 +1,36 @@
+bundle:
+  name: dbc_elt_olist_lakehouse
+  uuid: 26470ca5-215e-44ab-b94d-470479e0b17e
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog catalog name
+    default: olist
+  schema_bronze:
+    description: Schema for Bronze layer
+    default: bronze
+  schema_silver:
+    description: Schema for Silver layer
+    default: silver
+  schema_gold:
+    description: Schema for Gold layer
+    default: gold
+
+targets:
+  development:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-73969dce-fa94.cloud.databricks.com
+
+  production:
+    mode: production
+    workspace:
+      host: https://dbc-63c264e7-571e.cloud.databricks.com
+      root_path: /Workspace/Users/aarondcl123@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: aarondcl123@gmail.com
+        level: CAN_MANAGE
