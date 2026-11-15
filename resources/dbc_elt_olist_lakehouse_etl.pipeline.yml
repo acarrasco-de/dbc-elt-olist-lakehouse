@@ -1,5 +1,3 @@
-# The main pipeline for dbc_elt_olist_lakehouse
-
 resources:
   pipelines:
     dbc_elt_olist_lakehouse_etl:
@@ -9,12 +7,14 @@ resources:
       serverless: true
       root_path: "../src/dbc_elt_olist_lakehouse_etl"
 
+      configuration:
+        landing: ${var.landing_root}/landing/olist
+        schema_store: ${var.landing_root}/schemas
+
       libraries:
         - glob:
             include: ../src/dbc_elt_olist_lakehouse_etl/transformations/**
 
       environment:
         dependencies:
-          # We include every dependency defined by pyproject.toml by defining an editable environment
-          # that points to the folder where pyproject.toml is deployed.
           - --editable ${workspace.file_path}

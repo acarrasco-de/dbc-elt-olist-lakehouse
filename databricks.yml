@@ -18,6 +18,9 @@ variables:
   schema_gold:
     description: Schema for Gold layer
     default: gold
+  landing_root:
+    description: S3 bucket root (without trailing slash)
+    default: s3://databricks-datawizard-aaron-ext
 
 targets:
   development:
