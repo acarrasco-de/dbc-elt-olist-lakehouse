@@ -9,7 +9,6 @@ resources:
 
       configuration:
         landing: ${var.landing_root}/landing/olist
-        schema_store: ${var.landing_root}/schemas
 
       libraries:
         - glob:
