@@ -90,3 +90,21 @@ def sellers_brz():
 )
 def products_brz():
     return _leer_csv("products")
+
+
+@dp.table(
+    name="geolocation_brz",
+    comment="Geolocalización — Bronze, todo STRING, append-only",
+    table_properties={"delta.appendOnly": "true"},
+)
+def geolocation_brz():
+    return _leer_csv("geolocation")
+
+
+@dp.table(
+    name="product_category_brz",
+    comment="Categorías de producto — Bronze, todo STRING, append-only",
+    table_properties={"delta.appendOnly": "true"},
+)
+def product_category_brz():
+    return _leer_csv("product_category")
